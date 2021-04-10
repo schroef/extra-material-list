@@ -17,7 +17,7 @@ A Blender addon to list object/world materials in a more comfortable way in the 
 - Display materials as preview or plain list
 - Display object and world materials
 - Easier method for changing texture nodes
-- SHowing texture info
+- Showing texture info
 - Option to eliminate duplicates for node groups and materials (destructive!)
 
 ### System Requirements
