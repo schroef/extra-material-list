@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.4] - 2021-07-28
+
+### Fixed
+
+-Panel issue difference 2.83 and 290
+
+## [0.2.4] - 2021-04-08
+
+### Added
+
+- Check if we are in shading mode, should not show in Compositor
+- Better filter for what to show > later add lights and perhaps grease pencil?
+  Still needs work though
+
 ## [0.2.3] - 2021-04-09
 
 ### Added

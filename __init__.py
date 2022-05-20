@@ -11,6 +11,11 @@
 #-------------------------------------------------------------------------------
 
 # Changelog
+
+# 2021-07-28
+# Fixed
+# Panel issue difference 2.83 and 290
+
 # 2021-04-08
 # Added
 # - Check if we are in shading mode, should not show in Compositor
@@ -18,9 +23,16 @@
 #   Still needs work though
 # - Added popup operator menu > easy for fullscreen workflow
 #
+
 # Changed 
 # - default slot menu > changed slot to show actual name of the slot
 # - Updated default rows & cols
+
+
+# 2021-07-29 - v0.2.2.4 - 
+#
+# Changed
+# - Check for Bl version to show Heading or not
 
 
 bl_info = {
@@ -29,7 +41,7 @@ bl_info = {
     "category": "Node",
     "description": "An alternative object/world material list for Node Editor.",
     "location": "Node Editor > Tools > Material List",
-    "version": (0, 2, 2,1),
+    "version": (0, 2, 4),
     "blender": (2, 80, 0)
 }
 
@@ -106,7 +118,7 @@ class EML_PT_material_slots(Panel):
 class EML_PT_Panel(Panel):
     bl_space_type  = 'NODE_EDITOR'
     bl_region_type = 'UI'
-    bl_category = 'Item'
+    bl_category = 'Tools'
     bl_label = "Extra Material List"
 
     #--- Available only for "shading nodes" render
@@ -176,7 +188,11 @@ class EML_PT_Panel(Panel):
                         row = layout.row()
                         row.enabled = has_material_slots
                         row.ui_units_x = 4
-                        row = row.column(heading="Material Slot")
+                        if (bpy.app.version[1] < 90):
+                            row = layout.column(align=True)
+                            row.label(text="Material Slot")
+                        else:
+                            row = row.column(heading="Material Slot")
                         row.popover(panel="EML_PT_material_slots")
                         
                 # Preview list
@@ -290,7 +306,11 @@ class EML_PT_Panel(Panel):
                         row = layout.row()
                         row.enabled = has_material_slots
                         row.ui_units_x = 4
-                        row = row.column(heading="Material Slot")
+                        if (bpy.app.version[1] < 90):
+                            row = layout.column(align=True)
+                            row.label(text="Material Slot")
+                        else:
+                            row = row.column(heading="Material Slot")
                         row.popover(panel="EML_PT_material_slots")
 
                 layout.template_list(
@@ -393,7 +413,7 @@ class EML_PT_Panel(Panel):
 class EIL_PT_MaterialListPanel_Options(Panel):
     bl_space_type  = 'NODE_EDITOR'
     bl_region_type = 'UI'
-    bl_category = 'Item'
+    bl_category = 'Tool'
     bl_label = "Options"
     bl_parent_id = "EML_PT_Panel"
     bl_options = {'DEFAULT_CLOSED'}
@@ -409,19 +429,32 @@ class EIL_PT_MaterialListPanel_Options(Panel):
         #-----------------------------------------------------------------------
         # SETTINGS
         #-----------------------------------------------------------------------
-        column = layout.column(heading="Show:", align=True)
+        # print("bl %s" % bpy.app.version[1])
+        if (bpy.app.version[1] < 90):
+            column = layout.column(align=True)
+            column.label(text="Show")
+        else:
+            column = layout.column(heading="Show", align=True)
         column.prop(props, "show_icons")
         column.prop(props, "info")
         #--- List style buttons
         #--- Num. of rows & cols for image preview list		
-        column = layout.column(heading="Preview Style:", align=True)
+        if (bpy.app.version[1] < 90):
+            column = layout.column(align=True)
+            column.label(text="Preview Style")
+        else:
+            column = layout.column(heading="Preview Style", align=True)
         column.prop(props, "style") #,expand=True
         if props.style =='PREVIEW':
             column.prop(props, "rows")
             column.prop(props, "cols")
 
         layout.use_property_split = True
-        op = layout.column(heading="Clean", align=True)
+        if (bpy.app.version[1] < 90):
+            op = layout.column(align=True)
+            op.label(text="Clean")
+        else:
+            op = layout.column(heading="Clean", align=True)
         op.prop(props,"clean_enabled", text="Duplicates")
 
         flow = layout.grid_flow(row_major=True, columns=0, even_columns=False, even_rows=False, align=False)
@@ -526,7 +559,11 @@ class EML_OT_ImageListWM(Operator):
                         row = layout.row()
                         row.enabled = has_material_slots
                         row.ui_units_x = 4
-                        row = row.column(heading="Material Slot")
+                        if (bpy.app.version[1] < 90):
+                            row = layout.column(align=True)
+                            row.label(text="Material Slot")
+                        else:
+                            row = row.column(heading="Material Slot")
                         row.popover(panel="EML_PT_material_slots")
                         # row.popover(panel="EML_PT_material_slots", text="Material Slot")
                         
@@ -632,7 +669,11 @@ class EML_OT_ImageListWM(Operator):
                     row = layout.row()
                     row.enabled = has_material_slots
                     row.ui_units_x = 4
-                    row = row.column(heading="Material Slot")
+                    if (bpy.app.version[1] < 90):
+                        row = layout.column(align=True)
+                        row.label(text="Material Slot")
+                    else:
+                        row = row.column(heading="Material Slot")
                     row.popover(panel="EML_PT_material_slots")
                     # row.popover(panel="EML_PT_material_slots", text="Material Slot")
                         
