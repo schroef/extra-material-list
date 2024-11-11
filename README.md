@@ -8,7 +8,7 @@ Therefore, I made an addon that enables to pop-up an extra material list with sp
 
 Moreover, there is a button to remove material and node group duplicates (ending with .001, .002, etc), which might occur after appending assets from external files.
 
-!['Preview'](https://raw.githubusercontent.com/wiki/schroef/extra-material-list/images/eml-v025.jpg?2022-06-13)
+!['Preview'](https://raw.githubusercontent.com/wiki/schroef/extra-material-list/images/extra-material-list-preview-v026.jpg?2024-11-11)
 
 ## Features
 
