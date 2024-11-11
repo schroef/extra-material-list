@@ -6,6 +6,8 @@ Have you ever struggled with the tiny pop-up list in the material Node Editor? S
 
 Therefore, I made an addon that enables to pop-up an extra material list with specified number of rows and columns. Optionally, you can display all materials in a plain list.
 
+The panel also now has function to easy select image texture from Node Editor
+
 Moreover, there is a button to remove material and node group duplicates (ending with .001, .002, etc), which might occur after appending assets from external files.
 
 !['Preview'](https://raw.githubusercontent.com/wiki/schroef/extra-material-list/images/extra-material-list-preview-v026.jpg?2024-11-11)
